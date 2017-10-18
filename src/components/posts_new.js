@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { createPost } from '../actions/index'
@@ -17,7 +17,12 @@ class PostsNew extends Component {
 
     this.handleForm = this.handleForm.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.cancel = this.cancel.bind(this)
     
+  }
+
+  static contextTypes = {
+    router: PropTypes.object
   }
 
   handleForm (event) {
@@ -29,6 +34,13 @@ class PostsNew extends Component {
   handleSubmit(event) {
     event.preventDefault();
     this.props.createPost(this.state)
+      .then(() => {
+        this.context.router.push('/')
+      })
+  }
+
+  cancel () {
+    this.context.router.push('/')
   }
 
   render () {
@@ -48,6 +60,7 @@ class PostsNew extends Component {
           <textarea name='content' type='text-area' className='form-control' onChange={this.handleForm} value={this.state.content} />
           </div> 
         <button type='submit' className='btn btn-primary'>submit</button>
+        <button type='button' onClick={this.cancel} className='btn btn-danger'>cancel</button>
       </form>   
     )
   }
