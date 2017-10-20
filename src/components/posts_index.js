@@ -23,10 +23,11 @@ class PostIndex extends Component {
   }
 
   render () {
+    if (!this.renderPosts()) return <div>Loading ...</div>
     return(
       <div>
         <div>
-          <Link to='/posts/new' className='btn btn-primary'> Add New Posts</Link>
+          <Link to='/posts/new' className='btn btn-primary pull-xs-right'> Add New Posts</Link>
         </div>
         <h4>Post</h4>
         <ul className='list-group'>

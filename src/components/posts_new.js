@@ -18,7 +18,7 @@ class PostsNew extends Component {
     this.handleForm = this.handleForm.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.cancel = this.cancel.bind(this)
-    
+
   }
 
   static contextTypes = {
@@ -58,10 +58,10 @@ class PostsNew extends Component {
         <div className='form-group'>
           <label>content</label>
           <textarea name='content' type='text-area' className='form-control' onChange={this.handleForm} value={this.state.content} />
-          </div> 
+          </div>
         <button type='submit' className='btn btn-primary'>submit</button>
         <button type='button' onClick={this.cancel} className='btn btn-danger'>cancel</button>
-      </form>   
+      </form>
     )
   }
 }
